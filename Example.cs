@@ -11,12 +11,15 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class Example : MonoBehaviour {
+	// These speed variables are meant to be set in the Unity editor.
 	public float speedX;
 	public float speedY;
 
 	Rigidbody2D rb2D;
 
 	void Start () {
+		// Ensure that a BoxCollider2D and Rigidbody2D exist on the
+		// GameObject this script is attached to.
 		Assert.IsNotNull (GetComponent<BoxCollider2D> ());
 		Assert.IsNotNull (GetComponent<Rigidbody2D> ());
 
@@ -48,6 +51,7 @@ public class Example : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			nextX += speedX;
 		}
+		// Move the Rigidbody2D.
 		rb2D.MovePosition(new Vector2(nextX, nextY));
 	}
 }
